@@ -7,7 +7,7 @@ def find_minimum(data): #구분가능한 최소 자릿수 찾는 알고리즘
     i = len(str(len(data))) * -1 #구분해야하는 사람수의 자리수 * -1 
     while True:
         sliced_list = []
-        for j in range(data):
+        for j in data:
             sliced_list.append(j[i:])
         if len(set(sliced_list)) == len(sliced_list):
             break
