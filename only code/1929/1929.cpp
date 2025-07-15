@@ -2,53 +2,35 @@
 
 using namespace std;
 
-int IsPrime(int num)
-{
-    if (num < 2)
-        return false;
-    for (int i = 2; i*i <= num; ++i)
+void sieveOfEratosthenes(bool *list,int len){
+    for (int i = 2; i*i <= len; i++)
     {
-        if (num % i == 0)
-            return false;
-    }
-    return true;
-}
-
-void sieveOfEratosthenes(int *list,int len,int check){
-    int i = 0;
-    for (; i < check; i++)
-    {
-        if (list[i] % check == 0)
+        if (list[i] == false)
         {
-            break;
+            continue;
+        }
+        else
+        {
+            for (int j = i*2; j <= len; j += i)
+            {
+                list[j] = false;
+            }
         }
     }
-    for (; i < len; i += check)
-    {
-        list[i] = 0;
-    }
 }
 
-int* generate_prime_list(int over, int less) {
-    int len = less - over + 1;
-    int* list = new int[len];
-    for (int i = 0; i < len; i++)
-    {
-        list[i] = over + i;
-    }
-    for (int i = 2; i < less; i++)
-    {
-        sieveOfEratosthenes(list,len,i);
-    }
-    
+bool* generate_prime_list(int less) {
+    bool* list = new bool[less + 1];
+    fill(list,list + less + 1,true);
+    sieveOfEratosthenes(list,less);
     return list;
 }
-void print_list(int *list,int len) {
-    for (int i = 0; i < len; i++)
+void print_list(bool *list,int over,int less) {
+    for (int i = over; i <= less; i++)
     {
-        if (list[i] != 0)
+        if (list[i] == true)
         {
-            cout << list[i] << endl;
+            cout << i << endl;
         }
     }
 }
@@ -57,7 +39,7 @@ void print_list(int *list,int len) {
 int main() {
     int over,less;
     cin >> over >> less;
-    int *nums = generate_prime_list(over,less);
-    print_list(nums,less - over + 1);
+    bool *nums = generate_prime_list(less);
+    print_list(nums,over,less);
     return 0;
 }
