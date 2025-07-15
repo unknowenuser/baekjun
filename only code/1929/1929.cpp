@@ -15,9 +15,9 @@ int IsPrime(int num)
 }
 
 int* generate_prime_list(int over, int less) {
-    int current = less - over;
-    int* list = new int[current];
-    for (int i = 0; i < current; i++)
+    int len = less - over + 1;
+    int* list = new int[len];
+    for (int i = 0; i < len; i++)
     {
         if (IsPrime(over + i))
         {
@@ -44,6 +44,6 @@ int main() {
     int over,less;
     cin >> over >> less;
     int *nums = generate_prime_list(over,less);
-    print_list(nums,less-over);
+    print_list(nums,less - over + 1);
     return 0;
 }
