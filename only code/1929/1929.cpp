@@ -14,19 +14,33 @@ int IsPrime(int num)
     return true;
 }
 
+void sieveOfEratosthenes(int *list,int len,int check){
+    int i = 0;
+    for (; i < check; i++)
+    {
+        if (list[i] % check == 0)
+        {
+            break;
+        }
+    }
+    for (; i < len; i += check)
+    {
+        list[i] = 0;
+    }
+}
+
 int* generate_prime_list(int over, int less) {
     int len = less - over + 1;
     int* list = new int[len];
     for (int i = 0; i < len; i++)
     {
-        if (IsPrime(over + i))
-        {
-            list[i] = over + i;
-        }
-        else {
-            list[i] = 0;
-        }
+        list[i] = over + i;
     }
+    for (int i = 2; i < less; i++)
+    {
+        sieveOfEratosthenes(list,len,i);
+    }
+    
     return list;
 }
 void print_list(int *list,int len) {
