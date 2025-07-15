@@ -21,7 +21,9 @@ void sieveOfEratosthenes(bool *list,int len){
 
 bool* generate_prime_list(int less) {
     bool* list = new bool[less + 1];
-    fill(list,list + less + 1,true);
+    fill(list + 2,list + less + 1,true);
+    list[0] = false;
+    list[1] = false;
     sieveOfEratosthenes(list,less);
     return list;
 }
