@@ -3,9 +3,10 @@ def finder(l,r,k):
     max_d = (2 * (r - l)) // (k * (k - 1)) + 2
     result = set()
     for i in range(1,max_d):
-        max_x = ((r - i*t) // k) + 1
-        for j in range(1,max_x):
-            s = i*t + j*k
+        max_x = ((r - i * t) // k) + 1
+        min_x = ((l - i * t) // k)
+        for j in range(max(min_x,1),max_x):
+            s = i * t + j * k
             if s > r:
                 break
             if s >= l and s <= r:
