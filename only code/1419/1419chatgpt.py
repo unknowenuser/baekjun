@@ -1,3 +1,4 @@
+#틀렸음
 import sys
 def finder(l, r, k):
     t = k * (k - 1) // 2
