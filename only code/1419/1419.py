@@ -1,13 +1,13 @@
 def finder(l,r,k):
-    t = k*(k-1)/2
-    max_d = (2 * (r - l)) // (k * (k - 1)) + 1
-    min_d = (2 * (l - k)) // (k * (k - 1)) + 1
-    max_x = (((r - k) * (k - 1)) // 2) // k
-    min_x = (((l - k) * (k - 1)) // 2) // k
+    t = k*(k-1)//2
+    max_d = (2 * (r - l)) // (k * (k - 1)) + 2
     result = set()
-    for i in range(max(min_d,1),max_d):
-        for j in range(max(1,min_x),max_x):
+    for i in range(1,max_d):
+        max_x = ((r - i*t) // k) + 1
+        for j in range(1,max_x):
             s = i*t + j*k
+            if s > r:
+                break
             if s >= l and s <= r:
                 result.add(s)
 
