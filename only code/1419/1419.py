@@ -7,11 +7,12 @@ def finder(l,r,k):
         end = r
         result = end // 3 - (start + 2) // 3 + 1
     elif k == 4:
-        start = max(14,l)
+        start = max(10,l)
         end = r
         result = end // 2 - (start+1) // 2 + 1
-        if l <= 10:
-            result += 1
+        if l <= 12 and r >= 12:
+            result -= 1
+        
     elif k == 5:
         start = max(15,l)
         end = r
