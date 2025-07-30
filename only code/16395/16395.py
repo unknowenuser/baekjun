@@ -1,8 +1,9 @@
 class pascal:
     def combination(self,a,b):
         result = 1
+        b -= 1
         if b*2 > a:
-            b = a-b
+            b = a - b - 1
         for i in range(b):
             result *= (a - i - 1)
         for i in range(b):
