@@ -12,6 +12,9 @@ int main(){
             tempnum = tempnum + (num[i] - '0');
         }
     }
+    else{
+        tempnum = num[0] - '0';
+    }
     while (tempnum >= 10)
     {
         rooptimes++;
